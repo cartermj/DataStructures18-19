@@ -2,24 +2,38 @@ import java.io.File;
 import java.util.Scanner;
 
 public class ScanClass {
-    public void scanMethod()
+    public static void scanMethod()
     {
         Scanner scan = null;
         try
         {
-            File f = new File( "./src/text.txt" );
+            File f = new File( "./text.txt" );
             scan = new Scanner( f );
             int maxTaste = 0;
             int totalFoods = 0;
+            int maxEats = 0;
+            String food = "";
             for ( ;scan.hasNext(); )
             {
-                totalFoods += scan.nextInt();
+                StringBuilder current = new StringBuilder(scan.next());
+                while ( !scan.hasNextInt()  )
+                {
+                    current.append( " " + scan.next() );
+                }
+                int timesEaten = scan.nextInt();
+                totalFoods += timesEaten;
                 int currentTaste = scan.nextInt();
                 if ( currentTaste > maxTaste )
                 {
                     maxTaste = currentTaste;
+                    food = current.toString();
+                    maxEats = timesEaten;
                 }
             }
+            
+            double percentEaten = ( (double) maxEats/totalFoods ) * 100;
+            System.out.print( "You like " + food + " the most. You ate it " + percentEaten + " of the time." );
+            
         }
         catch( Exception e)
         {
@@ -27,11 +41,14 @@ public class ScanClass {
         }
         finally
         {
-            
+            if (scan != null) {
+                scan.close();
+            }
         }
     }
-    public static void main(String[] args) {
-
+    public static void main(String[] args)
+    {
+        scanMethod();
     }
 
 }
