@@ -33,4 +33,36 @@ public class MyLinkedList
             this( data, null );
         }
     }
+    
+//    public void add ( Object o )
+//    {
+//        if( head == null )
+//        {
+//            head = new Node ( o );
+//        }
+//        else
+//        {
+//            Node temp = head;
+//            while ( head.next != null )
+//            {
+//                
+//            }
+//        }
+//    }
+    
+    /**
+     * Returns the value at the index of index.
+     * @param index Gets the value at this index.
+     * @return Object Returns what you want
+     */
+    private Object get( int index )
+    {
+        Node temp = head;
+        if ( index < 0 || index >= size ) 
+        {
+            throw new IndexOutOfBoundsException();
+        }
+        
+        return 
+    }
 }

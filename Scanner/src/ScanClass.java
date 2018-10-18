@@ -7,22 +7,22 @@ public class ScanClass {
         Scanner scan = null;
         try
         {
-            File f = new File( "./text.txt" );
+            File f = new File( "Scanner/src/text.txt" );
             scan = new Scanner( f );
-            int maxTaste = 0;
+            Double maxTaste = 0.0;
             int totalFoods = 0;
             int maxEats = 0;
             String food = "";
-            for ( ;scan.hasNext(); )
+            while ( scan.hasNext() ) 
             {
-                StringBuilder current = new StringBuilder(scan.next());
+                StringBuilder current = new StringBuilder(scan.next()); 
                 while ( !scan.hasNextInt()  )
                 {
                     current.append( " " + scan.next() );
                 }
                 int timesEaten = scan.nextInt();
                 totalFoods += timesEaten;
-                int currentTaste = scan.nextInt();
+                Double currentTaste = scan.nextDouble();
                 if ( currentTaste > maxTaste )
                 {
                     maxTaste = currentTaste;
@@ -31,8 +31,15 @@ public class ScanClass {
                 }
             }
             
-            double percentEaten = ( (double) maxEats/totalFoods ) * 100;
-            System.out.print( "You like " + food + " the most. You ate it " + percentEaten + " of the time." );
+            if ( totalFoods == 0 )
+            {
+                System.out.print( "You have not eaten anything! Go eat!" );
+            }
+            else
+            {
+                double percentEaten = ( (double) maxEats/totalFoods ) * 100;
+                System.out.print( "You like " + food + " the most. You ate it " + percentEaten + "% of the time." );
+            }
             
         }
         catch( Exception e)

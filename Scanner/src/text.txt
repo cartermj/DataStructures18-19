@@ -4,12 +4,12 @@ Pasta
 Cereal
 150
 9.5
-Petrol
+Petrol Oil
 20
 1
 Candy
 5
 7.5
 Bread
-30000
+300
 10
